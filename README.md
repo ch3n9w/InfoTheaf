@@ -1,5 +1,7 @@
 > a android system Info theaf client app, and a server for saving 
 
+target version: >= android 10 (tested on android 11)
+
 client target:
 - bluetooth info
     - bluetooth name of current device
